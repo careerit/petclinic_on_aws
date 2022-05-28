@@ -1,5 +1,3 @@
-aws s3 cp s3://mysite-artifacts/petclinic.zip /tmp/
-cd /tmp
-unzip petclinic.zip
-sudo mv petclinic.war /opt/tomcat/
+sudo cp petclinic.war /opt/tomcat/ROOT.war
 sudo systemctl restart tomcat.service
+
