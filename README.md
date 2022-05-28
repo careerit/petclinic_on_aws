@@ -267,9 +267,54 @@ phases:
 
 ## Pre-requisites
 
+[Code Pipeline Reference](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-codedeploy.html)
+
 - `CodeDeployRole` role to manage ec2 instnaces - Choose service as `CodeDeploy` and  attach `AWSCodeDeployRole` to the role 
 - `ec2Instancerole` to manage CodeDeploy - assign **`AmazonEC2RoleforAWSCodeDeploy`** policy
 
+- Install `Code Deploy agent` on the  target ec2 instances. Follow this [Documentation](https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install.html) 
+
+For ubuntu servers follow the below steps. SSH into the ec2 instance 
+
+a. Install Dependencies
+
+```bash
+sudo apt-get update && sudo apt-get install -y ruby-full wget
+
+```
+
+b. Download the agent
+
+```bash
+wget https://bucket-name.s3.region-identifier.amazonaws.com/latest/install
+```
+
+Replace `bucket-name` and ` region-identifier` with the appropriate bucket name  with the region your ec2 is located.
+Find details [here](https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names) 
 
 
-[Reference](https://docs.aws.amazon.com/codebuild/latest/userguide/sample-codedeploy.html)
+
+
+For instance if your ec2 instnace is in the us-east-1 region then bucket name is `aws-codedeploy-us-east-1` and the region identifier is `us-east-1` 
+so the command becomes:
+```bash
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+```
+
+This downloads install file . Now run the following commands to install `code deploy agent`
+
+```bash
+chmod +x ./install
+sudo ./install auto
+```
+
+
+
+
+sudo apt-get update && sudo apt-get -y install ruby-full wget 
+wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install
+chmod +x install
+sudo ./install auto
+sudo service codedeploy-agent status
+
+
