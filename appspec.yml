@@ -1,5 +1,7 @@
 version: 0.0
 os: linux
-files:
-  - source: /petclinic.war
-    destination: /home/ubuntu/
+hooks:
+  BeforeInstall:
+    - location: install.sh
+      timeout: 300
+      runas: root
