@@ -16,5 +16,5 @@ artifacts:
   files:
     - target/petclinic.war
     - appspec.yml
-    - deployScripts/
+    - deployScripts/*.sh
   discard-paths: yes
