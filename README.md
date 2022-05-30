@@ -289,7 +289,7 @@ b. Download the agent
 wget https://bucket-name.s3.region-identifier.amazonaws.com/latest/install
 ```
 
-Replace `bucket-name` and ` region-identifier` with the appropriate bucket name  with the region your ec2 is located.
+Replace `bucket-name` and `region-identifier` with the appropriate bucket name  with the region your ec2 is located.
 Find details [here](https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names) 
 
 
@@ -318,3 +318,45 @@ sudo ./install auto
 sudo service codedeploy-agent status
 
 
+
+
+## Apache Virtual forwarding
+
+
+- Install apache2 
+```bash
+sudo apt-get install apache2 -y
+```
+
+- Enable apache modules
+
+```bash
+a2enmod proxy
+a2enmod proxy_http 
+```
+
+* Virtual Host forwarding.
+
+```bash
+cd /etc/apache2/sites-enabled
+```
+
+Create file in `/etc/apache2/sites-enabled` with the  name `000-default.conf` with the below content
+
+```java
+<VIRTUALHOST *:80>
+
+    ProxyPreserveHost On
+
+    # ...
+
+    ProxyPass / http://localhost:8080/
+</VIRTUALHOST>
+```
+
+
+Restart apache2
+
+```bash
+sudo systemctl restart apache2
+```
