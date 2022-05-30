@@ -6,10 +6,10 @@ files:
 file_exists_behavior: OVERWRITE
 hooks:
   BeforeInstall:
-    - location: deployscripts/preInstall.sh
+    - location: deployScripts/preInstall.sh
       timeout: 300
       runas: root
   AfterInstall:
-    - location: deployscripts/postInstall.sh
+    - location: deployScripts/postInstall.sh
       timeout: 300
       runas: root
