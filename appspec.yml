@@ -5,7 +5,11 @@ files:
     destination: /opt/tomcat/webapps/ROOT.war
 file_exists_behavior: OVERWRITE
 hooks:
+  BeforeInstall:
+    - location: deployscripts/preinstall.sh
+      timeout: 300
+      runas: root
   AfterInstall:
-    - location: install.sh
+    - location: deployscripts/install.sh
       timeout: 300
       runas: root
