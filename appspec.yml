@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: petclinic.war
-    destination: /opt/tomcat/webapps/ROOT.war
+    destination: /opt/tomcat/webapps/
 file_exists_behavior: OVERWRITE
 hooks:
   BeforeInstall:

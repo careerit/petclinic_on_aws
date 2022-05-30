@@ -1,2 +1,2 @@
-sudo rm -rf /opt/tomcat/webapps/ROOT
+# sudo systemctl stop tomcat.service
 
