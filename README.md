@@ -343,7 +343,7 @@ cd /etc/apache2/sites-enabled
 
 Create file in `/etc/apache2/sites-enabled` with the  name `000-default.conf` with the below content
 
-```java
+```
 <VIRTUALHOST *:80>
 
     ProxyPreserveHost On
@@ -370,4 +370,4 @@ sudo systemctl restart apache2
 
 Improvements to be done
 
-- Udpate Readme
+- Udpate Readme with apache proxy configuration for Tomcat 
